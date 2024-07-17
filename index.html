@@ -1,148 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IsaDB2 Docs</title>
-<meta name="apple-mobile-web-app-title" content="IsaDB2 Docs">
-<meta name="application-name" content="IsaDB2 Docs">
-<meta name="msapplication-TileColor" content="#f9f9f9">
-<meta name="theme-color" content="#f9f9f9"
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The new method of saving things - IsaDB2 is the precursor of IsaDB.">
-<meta property="og:image" content="https://images.emojiterra.com/google/android-12l/512px/1f3e6.png">
-<meta property="og:title" content="IsaDB2"
-<meta property="og:description" content="The new method of saving things - IsaDB2 is the precursor of IsaDB.">
-<link rel="icon" href="https://images.emojiterra.com/google/android-12l/512px/1f3e6.png" type="image/png">
-<link rel="shortcut icon" href="https://images.emojiterra.com/google/android-12l/512px/1f3e6.png" type="image/png">
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  .navbar {
-    background-color: #333;
-    overflow: hidden;
-  }
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  .dropdown .dropbtn {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-    padding: 14px 16px;
-    text-align: center;
-  }
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #ddd;
-    color: black;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IsaDB</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/bJy6nQ7/favicom.png">
+    <meta name="title" content="IsaDB - Easy local database" />
+    <meta name="description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://isadb.js.org" />
+    <meta property="og:title" content="IsaDB - Easy local database" />
+    <meta property="og:description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="og:image" content="https://i.ibb.co/0tLyWRY/banner.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://i.ibb.co/0tLyWRY/banner.png" />
+    <meta property="twitter:title" content="IsaDB - Easy local database" />
+    <meta property="twitter:description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="twitter:image" content="https://i.ibb.co/0tLyWRY/banner.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .install-command {
+            display: inline-block;
+            width: auto;
+            position: relative;
+            padding: 1rem 1rem 1rem 2.5rem;
+            font-size: 1rem;
+            padding-left: 2rem;
+        }
+        .install-command::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h4v2H6v2h8v-2h-2v-2h4c1.1 0 2-.9 2-2V5l-6-4zm2 16H4V3h10v5h4v9z"/></svg>') no-repeat center;
+            transition: background 0.3s;
+        }
+        .copied::before {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="limegreen" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14.5l-5-5L7.41 10l3.59 3.59L16.59 8 18 9.41l-7 7z"/></svg>') no-repeat center;
+        }
+    </style>
 </head>
-<body>
-
-<div class="navbar">
-  <a href="#">IsaDB2</a>
-  <div class="dropdown">
-    <button class="dropbtn">pt-BR
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Exemplo</a>
-      <a href="#">Iniciando</a>
-      <a href="#">Arquivo .isadb2</a>
+<body class="bg-gray-800 flex flex-col items-center justify-center min-h-screen text-white">
+    <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">$IsaDB[Easy local database]</h1>
+        <p class="text-lg md:text-2xl mb-8">IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code.</p>
+        <div class="flex-col items-center space-x-4 mb-8">
+            <a href="https://isadb.js.org/docs">
+                <button class="bg-purple-600 text-white font-semibold py-2 px-4 rounded">Docs</button>
+            </a>
+            <a href="https://github.com/renato425/isadb">
+                <button class="border border-white text-white font-semibold py-2 px-4 rounded bg-transparent">GitHub</button>
+            </a>
+        </div>
+        <div class="flex flex-col items-center">
+            <a href="https://www.buymeacoffee.com/renatiin">
+                <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffe">
+            </a>
+        </div>
+        <div class="mt-8">
+            <code id="install-command" class="block bg-gray-700 text-white p-4 rounded cursor-pointer install-command">npm install isadb</code>
+        </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">en-US
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Example</a>
-      <a href="#">Getting Started</a>
-      <a href="#">.isadb2 File</a>
-    </div>
-  </div>
-</div>
-
-<h1 id="-isadb2-the-new-isadb-">🤩 IsaDB2 - The New IsaDB!!</h1>
-<h2 id="isadb2-the-new-method-of-saving">IsaDB2 - The new method of saving</h2>
-<p><a href="https://npmjs.com/package/isadb2"><img src="https://img.shields.io/badge/npm_version-v2.0.0-blue" alt="npm"></a> <a href="https://squarecloud.app"><img src="https://img.shields.io/badge/supported_by-Square_Cloud-green" alt="square"></a> <a href="https://isadb.js.org"><img src="https://img.shields.io/badge/docs-8A2BE" alt="documentation"></a></p>
-<h3 id="about">About</h3>
-<blockquote>
-<p>The IsaDB2 is the new method of saving, creating a <code>.isadb2</code> file, you can make a new database local.</p>
-</blockquote>
-<p><strong>See</strong> <a href="https://isadb.js.org"><strong>the docs!</strong></a> <strong>for ptBR language</strong></p>
-<h4 id="compatibility-works-with-commonjs-an-ecmascript-">Compatibility: Works with <strong>CommonJS</strong> an <strong>EcmaScript</strong></h4>
-<h3 id="instalation">Instalation</h3>
-<p><strong>Tested in Node v18.7.0</strong></p>
-<pre><code>npm <span class="hljs-keyword">install</span> isadb2
-</code></pre><h3 id="example-usage">Example Usage</h3>
-<p><strong>Install isadb2:</strong></p>
-<pre><code>npm <span class="hljs-keyword">install</span> isadb2
-</code></pre><p><strong>Creating a instance and saving things</strong></p>
-<pre><code class="lang-js"><span class="hljs-comment">//using Ecma</span>
-<span class="hljs-keyword">import</span> { create, get, set } <span class="hljs-keyword">from</span> <span class="hljs-string">'isadb2'</span>
-
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">await</span> create() <span class="hljs-comment">//create instance</span>
-
-    <span class="hljs-keyword">await</span> set(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>) <span class="hljs-comment">//save inside db.isadb2</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-string">'foo'</span>)) <span class="hljs-comment">//returns -&gt; bar</span>
-}
-
-<span class="hljs-comment">//using CommonJS</span>
-<span class="hljs-keyword">const</span> isadb2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'isadb2'</span>)
-
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">await</span> isadb2.create() <span class="hljs-comment">//create instance</span>
-
-    <span class="hljs-keyword">await</span> isadb2.set(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>) <span class="hljs-comment">//save inside db.isadb2</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> isadb2.get(<span class="hljs-string">'foo'</span>)) <span class="hljs-comment">//returns -&gt; bar</span>
-}
-</code></pre>
-<h3 id="contributing">Contributing</h3>
-<p>Before creating an issue, please ensure that it hasn&#39;t already been reported/suggested, and double-check the <a href="https://isadb.js.org">documentation</a> Check the repository if you&#39;d like to submit a PR.</p>
-<h3 id="help">Help</h3>
-<p>If you don&#39;t understand something in the documentation, you are experiencing problems, or you just need a gentle nudge in the right direction, please don&#39;t hesitate to make a issue in <a href="https://github.com/renato425/isadb2">GitHub</a></p>
-
-
+    <script>
+        document.getElementById('install-command').addEventListener('click', function() {
+            navigator.clipboard.writeText('npm install isadb')
+            document.getElementById('install-command').classList.add('copied')
+            setTimeout(() => {
+                document.getElementById('install-command').classList.remove('copied')
+            }, 3000)
+        })
+    </script>
 </body>
 </html>
