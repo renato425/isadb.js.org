@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/bJy6nQ7/favicom.png">
+    <title>IsaDB - Docs</title>
+    <meta name="title" content="IsaDB - Easy local database" />
+    <meta name="description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://isadb.js.org" />
+    <meta property="og:title" content="IsaDB - Easy local database" />
+    <meta property="og:description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="og:image" content="https://i.ibb.co/0tLyWRY/banner.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://isadb.js.org" />
+    <meta property="twitter:title" content="IsaDB - Easy local database" />
+    <meta property="twitter:description" content="IsaDB is a local database that uses a new way of saving your data, making it easy to read and fun to use within your code." />
+    <meta property="twitter:image" content="https://i.ibb.co/0tLyWRY/banner.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .menu-item {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        .menu-item:hover {
+            background-color: #555;
+        }
+        nav {
+            height: 100%;
+        }
+        pre {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            white-space: pre-wrap;
+        }
+        blockquote {
+            border-left: 4px solid #ccc;
+            padding-left: 1rem;
+            color: #dbd7d7;
+        }
+        a {
+            color: #3490dc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white">
+    <div class="flex">
+        <nav class="w-1/4 md:h-auto p-4 bg-gray-900">
+            <h2 class="text-2xl font-bold mb-4">Menu</h2>
+            <div>
+                <h3 class="text-xl font-semibold">Classes</h3>
+                <ul>
+                    <li class="menu-item" onclick="loadContent('Instance')">Instance</li>
+                    <li class="menu-item" onclick="loadContent('InstanceValue')">InstanceValue</li>
+                    <li class="menu-item" onclick="loadContent('Parser')">Parser</li>
+                    <li class="menu-item" onclick="loadContent('ArrayFunctionsDefined')">ArrayFunctionsDefined</li>
+                    <li class="menu-item" onclick="loadContent('ArrayFunctionsReturned')">ArrayFunctionsReturned</li>
+                    <li class="menu-item" onclick="loadContent('NumberFunctionsDefined')">NumberFunctionsDefined</li>
+                    <li class="menu-item" onclick="loadContent('NumberFunctionsReturned')">NumberFunctionsReturned</li>
+                </ul>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-xl font-semibold">Functions</h3>
+                <ul>
+                    <li class="menu-item" onclick="loadContent('arrayContent')">arrayContent</li>
+                </ul>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-xl font-semibold">Guide</h3>
+                <ul>
+                    <li class="menu-item" onclick="loadContent('HowToStart')">How to start</li>
+                    <li class="menu-item" onclick="loadContent('Manipulating.isadbFiles')">Manipulating .isadb files</li>
+                    <li class="menu-item" onclick="loadContent('DatabaseLimitations')">Database limitations</li>
+                </ul>
+            </div>
+        </nav>
+        <main class="w-3/4 p-4 overflow-y-auto">
+            <div id="content" class="prose lg:prose-xl">
+                <!-- O conteúdo do Markdown convertido será inserido aqui -->
+                <img src="../assets/logo-green.png"  style="width:25rem;height: 50%;display: block; margin: auto">
+                <div class="flex justify-center items-center space-x-4 my-4">
+                    <a href="https://npmjs.com/package/isadb"><img src="https://img.shields.io/badge/npm_version-v1.0.0-FF0000" alt="npm"></a> 
+                    <a href="https://github.com/renato425"><img src="https://img.shields.io/badge/maded_with_love_by-renatiin-29AB76" alt="renatiin"></a> 
+                    <a href="https://isadb.js.org"><img src="https://img.shields.io/badge/docs-8A2BE" alt="docs"></a></p>
+                </div>
+                <div class="flex justify-center my-4">
+                    <a href="https://www.buymeacoffee.com/renatiin"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a></p>
+                </div>
+                <h4 style="font-size: 2.3rem;" id="about">About</h4>
+                <h1 id="-isadb-easy-db-" style="font-size: 1.5rem;">😎 IsaDB - Easy DB.</h1>
+                <h3 id="a-new-way-for-you-to-control-your-project-data-" style="font-size: 1.2rem">A new way for you to control your project data.</h3>
+                <br>
+                <blockquote>
+                    <p style="font-size: 1.1rem;">With a new look, IsaDB works in the same way, but supports new entries and maximizes its use even more!</p>
+                </blockquote>
+                <br>
+                <h5 id="compatibility-supports-ecmascript-commonjs-and-typescript" style="font-size: 1.3rem;">Compatibility:</h5>
+                <ul class="list-disc" style="padding-left: 3rem">
+                    <li>EcmaScript</li>
+                    <li>CommonJS</li>
+                    <li>TypeScript</li>
+                </ul>
+                <br>
+                <h2 id="instalation-example-usage" style="font-size: 1.8rem">Instalation &amp; Example Usage</h2>
+                <p style="font-size: 1.1rem">(Tested in node  <code style="color: #c90de2">v18.18.2</code>)</p>
+                <h4 id="install-isadb" style="font-size: 1.2rem">> Install isadb</h4>
+<pre>
+<span style="color: rgb(111, 66, 193)">npm</span> <span style="color: #11eaf2">install isadb</span><code>
+<span style="color: rgb(111, 66, 193)">yarn</span> <span style="color: #11eaf2">add isadb</span>
+<span style="color: rgb(111, 66, 193)">pnpm</span> <span style="color: #11eaf2">add isadb</span>
+</code><span style="color:rgb(111, 66, 193)">bun</span> <span style="color: #11eaf2">add isadb</span>
+</pre>
+<br>
+                <h4 id="creating-a_instance-and-saving-things" style="font-size: 1.2rem">> Creating a instance and saving things</h4>
+                <pre><code class="lang-js"><span style="color: #6e6e6e">//using Ecma</span>
+<span style="color: #e310c3">import</span> <span style="color: #bfab11">{</span> <span style="color: #f4e25a">Instance</span> <span style="color: #bfab11">}</span> <span style="color: #e310c3">from</span> <span style="color: #38f54e">'isadb'</span>
+
+<span style="color: #c7460a">function</span> <span style="color: #090fb0">main</span><span style="color: #e9cf0e">() {</span>
+    <span style="color: #c7460a">const</span> <span style="color: #bc8c06">instance</span> <span style="color: #e310c3">= new</span> <span style="color: #090fb0">Instance</span><span style="color: #bc08a1">()</span> <span style="color: #6e6e6e">// Create a new instance, you can change the name of the file inside this class.</span>
+
+    <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">set</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span>, <span style="color: #38f54e">'bar'</span><span style="color: #e310c3">)</span> <span style="color: #6e6e6e">// Save inside the instance file.</span>
+    <span style="color: #f4e25a">console</span><span style="color: #e310c3">.</span><span style="color: #070dcd">log</span><span style="color: #e310c3">(</span><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span><span style="color: #e310c3">))</span> <span style="color: #6e6e6e">// Returns -> bar</span>
+<span style="color: #e9cf0e">}</span>
+
+<span style="color: #6e6e6e">//using CommonJS</span>
+<span style="color: #c7460a">const</span> <span style="color: #bfab11">{</span> <span style="color: #f4e25a">Instance</span> <span style="color: #bfab11">}</span> <span style="color: #e310c3">=</span> <span style="color: #070dcd">require</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'isadb'</span><span style="color: #e310c3">)</span>
+
+<span style="color: #c7460a">function</span> <span style="color: #090fb0">main</span><span style="color: #e9cf0e">() {</span>
+    <span style="color: #c7460a">const</span> <span style="color: #bc8c06">instance</span> <span style="color: #e310c3">= new</span> <span style="color: #090fb0">Instance</span><span style="color: #bc08a1">()</span>
+
+    <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">set</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span>, <span style="color: #38f54e">'bar'</span><span style="color: #e310c3">)</span>
+    <span style="color: #f4e25a">console</span><span style="color: #e310c3">.</span><span style="color: #070dcd">log</span><span style="color: #e310c3">(</span><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span><span style="color: #e310c3">))</span>
+</code><span style="color: #e9cf0e">}</span></pre>
+                <h2 id="contribuing" style="font-size: 2.3rem;">Contribuing</h2>
+                <p style="font-size: 1.1rem;">Before creating an issue, please ensure that it hasn&#39;t already been reported/suggested, and double-check the <a href="https://isadb.js.org">documentation</a>.</p>
+                <p style="font-size: 1.1rem;">Check the <a href="https://github.com/renato425/isadb">repository</a> if you&#39;d like to submit a PR.</p>
+                <h2 id="help" style="font-size: 2.3rem;">Help</h2>
+                <p style="font-size: 1.1rem;">If you don&#39;t understand something in the documentation, you are experiencing problems, or you just need a gentle nudge in the right direction, please don&#39;t hesitate to make a issue in <a href="https://github.com/renato425/isadb">GitHub</a>. And if it&#39;s extremely serious, contact me on Discord - My username: <code>renatiinofc</code>.</p>
+            </div>
+            <div id="InstanceDetails" class="mt-8">
+                <!-- Detalhes das Propriedades e Métodos serão carregados aqui -->
+            </div>
+        </main>
+    </div>
+    <script>
+        function loadContent(section) {
+            const contentDiv = document.getElementById('content');
+            const detailsDiv = document.getElementById('InstanceDetails');
+            let sectionContent = '';
+            let detailsContent = '';
+            
+            switch(section) {
+                case 'Instance':
+                    sectionContent = `
+<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> Instance</h1>
+<p style="font-size: 1.2rem">Represents an instance of the database.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Properties</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('Instance_fileName')">fileName</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_array')">array</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_number')">number</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('Instance_constructor')">constructor</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_all')">all</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_get')">get</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_writeDb')">_writeDb</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_set')">set</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_has')">has</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_remove')">remove</li>
+        </ul>
+    </div>
+</div>
+`;
+                    detailsContent = `
+<h1 style="font-size: 1.8rem">Properties</h1>
+<h1 id="Instance_fileName" style="font-size: 1.3rem; margin-top: 1.5rem;">fileName</h1>
+<p style="font-size: 1.1rem">Name of the file where the instance data is stored.</p>
+
+<h1 id="Instance_array" style="font-size: 1.3rem; margin-top: 2rem;">array : ArrayFunctionsDefined</h1>
+<p style="font-size: 1.2rem">Starts manipulating arrays with the defined value.</p>
+
+<h1 id="Instance_number" style="font-size: 1.3rem; margin-top: 2rem;">number : NumberFunctionsDefined</h1>
+<p style="font-size: 1.2rem">Starts manipulating numbers with the defined value.</p>
+<br>
+<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="Instance_constructor" style="font-size: 1.3rem; margin-top: 2rem;">constructor</h1>
+<p style="font-size: 1.1rem">Initializes a new instance of the database.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">instance</span> <span style="color: #e310c3">= new</span> <span style="color: #090fb0">Instance</span><span style="color: #bc08a1">()</span></code></pre>
+
+<h1 id="Instance_all" style="font-size: 1.3rem; margin-top: 2rem;">all() : Object</h1>
+<p style="font-size: 1.2rem">Returns all data from the database.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">allData</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">all</span><span style="color: #e310c3">()</span></code></pre>
+
+<h1 id="Instance_get" style="font-size: 1.3rem; margin-top: 2rem;">get(propertyName: string) : InstanceValue | undefined</h1>
+<p style="font-size: 1.2rem">Gets a property from the database.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">value</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'property'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">value</span></code></pre>
+
+
+<h1 id="Instance_writeDb" style="font-size: 1.3rem; margin-top: 2rem;">_writeDb</h1>
+<p style="font-size: 1.2rem">Writes data to the database file.</p>
+
+<h1 id="Instance_set" style="font-size: 1.3rem; margin-top: 2rem;">set(propertyName: string, value: any)</h1>
+<p style="font-size: 1.2rem">Sets a property in the database.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">value</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">set</span><span style="color: #e310c3"><span style="color: #e310c3">(</span></span><span style="color: #38f54e">'the property'</span>, <span style="color: #38f54e">'the value to be saved.'</span><span style="color: #e310c3"><span style="color: #e310c3">)</span></span></code></pre>
+
+
+
+<h1 id="Instance_has" style="font-size: 1.3rem; margin-top: 2rem;">has(propertyName: string) : boolean</h1>
+<p style="font-size: 1.2rem">Checks if the database has a property.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">hasBoolean</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">has</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the property name'</span><span style="color: #e310c3">)</span></code></pre>
+
+
+
+<h1 id="Instance_remove" style="font-size: 1.3rem; margin-top: 2rem;">remove(propertyName: string)</h1>
+<p style="font-size: 1.2rem">Removes a property from the database.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">remove</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the property name'<span style="color: #e310c3">)</span></span>;</code></pre>
+`;
+                    break;
+                case 'InstanceValue':
+                    sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> InstanceValue</h1>
+<p style="font-size: 1.2rem">Represents a value within a database instance.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Properties</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('InstanceValue_instance')">instance</li>
+            <li class="menu-item" onclick="scrollToDetail('InstanceValue_key')">key</li>
+            <li class="menu-item" onclick="scrollToDetail('InstanceValue_array')">array</li>
+            <li class="menu-item" onclick="scrollToDetail('InstanceValue_value')">value</li>
+            <li class="menu-item" onclick="scrollToDetail('InstanceValue_number')">number</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('Instance_get')">get</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_set')">set</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_has')">has</li>
+            <li class="menu-item" onclick="scrollToDetail('Instance_remove')">remove</li>
+        </ul>
+    </div>
+</div>`;
+
+detailsContent = `
+<h1 style="font-size: 1.8rem">Properties</h1>
+<h1 id="InstanceValue_instance" style="font-size: 1.3rem; margin-top: 1.5rem;">instance</h1>
+<p style="font-size: 1.1rem">The database instance.</p>
+
+<h1 id="InstanceValue_key" style="font-size: 1.3rem; margin-top: 1.5rem;">key</h1>
+<p style="font-size: 1.1rem">The key to the value</p>
+
+<h1 id="InstanceValue_value" style="font-size: 1.3rem; margin-top: 1.5rem;">value</h1>
+<p style="font-size: 1.1rem">The value returned in first method.</p>
+
+<h1 id="InstanceValue_array" style="font-size: 1.3rem; margin-top: 2rem;">array : ArrayFunctionsReturned</h1>
+<p style="font-size: 1.2rem">Starts manipulating arrays with the returned value.</p>
+
+<h1 id="InstanceValue_number" style="font-size: 1.3rem; margin-top: 2rem;">number : NumberFunctionsReturned</h1>
+<p style="font-size: 1.2rem">Starts manipulating numbers with the returned value.</p>
+<br>
+<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="Instance_constructor" style="font-size: 1.3rem; margin-top: 2rem;">constructor</h1>  <img src="https://img.shields.io/badge/NOT_RECOMMENDED_FOR_USE-FF0000" alt="docs">
+<p style="font-size: 1.1rem">Initializes a new value manipulator.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">instanceValue</span> <span style="color: #e310c3">= new</span> <span style="color: #090fb0">InstanceValue</span><span style="color: #bc08a1">(</span><span style="color: #f4e25a">instance</span>, <span style="color: #f4e25a">propertyName</span><span style="color: #bc08a1">)</span></span></code></pre>
+
+<h1 id="Instance_get" style="font-size: 1.3rem; margin-top: 2rem;">get(propertyName: string) : InstanceValue | undefined</h1>
+<p style="font-size: 1.2rem">Gets a property from the database, inside the value returned first.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">value</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'objectExample'</span><span style="color: #e310c3">)<span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'property'</span><span style="color: #e310c3">)</span>;</code></pre>
+
+
+<h1 id="Instance_set" style="font-size: 1.3rem; margin-top: 2rem;">set(propertyName: string, value: any)</h1>
+<p style="font-size: 1.2rem">Sets a property in property returned.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'objectExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #070dcd">set</span><span style="color: #e310c3"><span style="color: #e310c3">(</span></span><span style="color: #38f54e">'the property'</span>, <span style="color: #38f54e">'the value to be saved.'</span><span style="color: #e310c3"><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="Instance_has" style="font-size: 1.3rem; margin-top: 2rem;">has(propertyName: string) : boolean</h1>
+<p style="font-size: 1.2rem">Checks if the property has a other property insired.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">hasBoolean</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the property name'</span><span style="color: #e310c3">)<span style="color: #e310c3">.</span><span style="color: #070dcd">has</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'property'</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+
+<h1 id="Instance_remove" style="font-size: 1.3rem; margin-top: 2rem;">remove(propertyName: string)</h1>
+<p style="font-size: 1.2rem">Removes a property from the property returned first.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the property name'<span style="color: #e310c3">)<span style="color: #e310c3">.</span><span style="color: #070dcd">remove</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'property'</span><span style="color: #e310c3">)</span></span></span>;</code></pre>`
+                    break;
+                case 'Parser':
+                    sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> Parser</h1> <img src="https://img.shields.io/badge/NOT_RECOMMENDED_FOR_USE_OUTSIDE_THE_CLASS_INSTANCE-FF0000" alt="docs">
+<p style="font-size: 1.2rem">Analyze and return values from the .isadb file.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Properties</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('Parser_fileName')">fileName</li>
+            <li class="menu-item" onclick="scrollToDetail('Parser_lines')">lines</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('Parser_databaseFile')">databaseFile</li>
+        </ul>
+    </div>
+</div>`;
+detailsContent = `
+<h1 style="font-size: 1.8rem">Properties</h1>
+<h1 id="Parser_fileName" style="font-size: 1.3rem; margin-top: 1.5rem;">fileName : string</h1>
+<p style="font-size: 1.1rem">The name of the file to be analyzed.</p>
+
+<h1 id="Parser_lines" style="font-size: 1.3rem; margin-top: 1.5rem;">lines : array</h1>
+<p style="font-size: 1.1rem">All lines of the file separated.</p>
+
+<br>
+<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="Parser_databaseFile" style="font-size: 1.3rem; margin-top: 2rem;">databaseFile : Object</h1>
+<p style="font-size: 1.1rem">Analyzes and returns the database.</p><br><br><br><br><br><br><br><br><br><br><br>`
+                    break;
+                case 'arrayContent':
+                    sectionContent = `
+<h1 id="arraycontent" style="font-size: 1.8rem; margin-top: 2rem;"><span style="color: #0af519">function</span> arrayContent(arrayString: string) : Array</h1>
+<p style="font-size: 1.2rem">Parses the content of an array string and returns an array of items.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">myArray</span> <span style="color: #e310c3">=</span> <span style="color: #070dcd">arrayContent</span><span style="color: #e310c3">(</span><span style="color: #38f54e">"['value 1', 'value 2', 'value 3']"</span><span style="color: #e310c3">)</span>;</code></pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+`;
+                    break;
+                case 'ArrayFunctionsReturned': 
+sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> ArrayFunctionsReturned</h1> <img src="https://img.shields.io/badge/NOT_RECOMMENDED_FOR_USE_OUTSIDE_THE_CLASS_INSTANCE-FF0000" alt="docs">
+<p style="font-size: 1.2rem">Return array value manipulation.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('ArrayFunctionsReturned_has')">has</li>
+            <li class="menu-item" onclick="scrollToDetail('ArrayFunctionsReturned_push')">push</li>
+        </ul>
+    </div>
+</div>`
+
+detailsContent = `<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="ArrayFunctionsReturned_has" style="font-size: 1.3rem; margin-top: 2rem;">has</h1>
+<p style="font-size: 1.1rem">Checks if there is a value in the returned array.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">hasBooleanArray</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'arrayExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">array</span><span style="color: #e310c3">.</span></span><span style="color: #070dcd">has</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the value to be checked'</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="ArrayFunctionsReturned_push" style="font-size: 1.3rem; margin-top: 2rem;">push</h1>
+<p style="font-size: 1.1rem">Adds a value to the returned array.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'arrayExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">array</span><span style="color: #e310c3">.</span></span><span style="color: #070dcd">push</span><span style="color: #e310c3">([</span><span style="color: #38f54e">'value 1'</span>, <span style="color: #38f54e">'value 2'</span>, <span style="color: #4916f0">1643</span><span style="color: #e310c3">])</span></span></code></pre><br><br><br><br><br><br><br><br><br><br><br><br><br>
+`
+                    break
+                case 'ArrayFunctionsDefined':
+                sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> ArrayFunctionsDefined</h1>
+<p style="font-size: 1.2rem">Array value manipulation defined by the user.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('ArrayFunctionsDefined_has')">has</li>
+            <li class="menu-item" onclick="scrollToDetail('ArrayFunctionsDefined_push')">push</li>
+        </ul>
+    </div>
+</div>
+`;
+                    detailsContent = `
+<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="ArrayFunctionsDefined_has" style="font-size: 1.3rem; margin-top: 2rem;">has</h1>
+<p style="font-size: 1.1rem">Checks if there is a value in the defined array property.</p>
+<pre><code class="lang-js"><span style="color: #c7460a">const</span> <span style="color: #bc8c06">hasBooleanArray</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">array</span><span style="color: #e310c3">.</span><span style="color: #070dcd">has</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'arrayExample'</span>, <span style="color: #38f54e">'the value to be checked'</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="ArrayFunctionsDefined_push" style="font-size: 1.3rem; margin-top: 2rem;">push</h1>
+<p style="font-size: 1.1rem">Adds a value to the defined array.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">array</span><span style="color: #e310c3">.</span><span style="color: #070dcd">push</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'arrayExample'</span>, <span style="color: #38f54e">'property 1 to be add'</span>, <span style="color: #38f54e">'property 2 to be add'</span><span style="color: #e310c3">)</span></span></code></pre><br><br><br><br><br><br><br><br><br><br><br><br><br>`
+                    break
+                case 'NumberFunctionsReturned':
+                    sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> NumberFunctionsReturned</h1> <img src="https://img.shields.io/badge/NOT_RECOMMENDED_FOR_USE_OUTSIDE_THE_CLASS_INSTANCE-FF0000" alt="docs">
+<p style="font-size: 1.2rem">Number value manipulation returned by the user.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsReturned_add')">add</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsReturned_sub')">sub</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsReturned_multiply')">multiply</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsReturned_divide')">divide</li>
+        </ul>
+    </div>
+</div>`
+
+detailsContent = `<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="NumberFunctionsReturned_add" style="font-size: 1.3rem; margin-top: 2rem;">add</h1>
+<p style="font-size: 1.1rem">Adds to the returned value.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">add</span><span style="color: #e310c3">(</span><span style="color: #4916f0">1643</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+
+<h1 id="NumberFunctionsReturned_sub" style="font-size: 1.3rem; margin-top: 2rem;">sub</h1>
+<p style="font-size: 1.1rem">Subtract a value to the returned number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">sub</span><span style="color: #e310c3">(</span><span style="color: #4916f0">1500</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="NumberFunctionsReturned_multiply" style="font-size: 1.3rem; margin-top: 2rem">multiply</h1>
+<p style="font-size: 1.1rem">Multiply a value to the returned number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">multiply</span><span style="color: #e310c3">(</span><span style="color: #4916f0">12</span><span style="color: #e310c3">)</span></span></code></pre>
+
+<h1 id="NumberFunctionsReturned_divide" style="font-size: 1.3rem; margin-top: 2rem">divide</h1>
+<p style="font-size: 1.1rem">Divide a value to the returned number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">divide</span><span style="color: #e310c3">(</span><span style="color: #4916f0">5</span><span style="color: #e310c3">)</span></span></code></pre>
+`
+break
+            case 'NumberFunctionsDefined':
+                sectionContent = `<h1 style="font-size: 2rem"><span style="color: #ff6600">class</span> NumberFunctionsDefined</h1>
+<p style="font-size: 1.2rem">Number value manipulation defined by the user.</p>
+<br>
+<div class="flex gap-8 mt-4">
+    <div>
+        <h3 style="font-size: 1.5rem">Methods</h3>
+        <ul class="list-disc ml-4">
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsDefined_add')">add</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsDefined_sub')">sub</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsDefined_multiply')">multiply</li>
+            <li class="menu-item" onclick="scrollToDetail('NumberFunctionsDefined_divide')">divide</li>
+        </ul>
+    </div>
+</div>`
+detailsContent = `<h1 style="font-size: 1.8rem">Methods</h1>
+
+<h1 id="NumberFunctionsDefined_add" style="font-size: 1.3rem; margin-top: 2rem;">add</h1>
+<p style="font-size: 1.1rem">Adds to the defined value.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">add</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span>, <span style="color: #4916f0">1243</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="NumberFunctionsDefined_sub" style="font-size: 1.3rem; margin-top: 2rem;">sub</h1>
+<p style="font-size: 1.1rem">Subtract a value to the defined number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">sub</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span>, <span style="color: #4916f0">1000</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="NumberFunctionsDefined_multiply" style="font-size: 1.3rem; margin-top: 2rem">multiply</h1>
+<p style="font-size: 1.1rem">Multiply a value to the defined number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">multiply</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span>, <span style="color: #4916f0">12</span><span style="color: #e310c3">)</span></span></code></pre>
+
+
+<h1 id="NumberFunctionsDefined_divide" style="font-size: 1.3rem; margin-top: 2rem">divide</h1>
+<p style="font-size: 1.1rem">Divide a value to the defined number.</p>
+<pre><code class="lang-js"><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">divide</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span>, <span style="color: #4916f0">5</span><span style="color: #e310c3">)</span></span></code></pre>`
+            break
+                case 'HowToStart':
+                    sectionContent = `<h1 style="font-size: 2rem">Getting started with IsaDB.</h1>`
+                    detailsContent = `<p style="font-size: 1.2rem">Thank you for choosing or analyzing IsaDB. If you don't know much about this new local database, we can help you get started.
+<br>                        
+IsaDB, for now (07/13/2024) only has support for Node.JS. But it also supports TypeScript.
+It can also be used in bun, yarn, etc.
+<br><br>
+IsaDB was created with the aim of helping developers read and use files. It is object-oriented in its library, with simple saving and reading in an .isadb file.
+<br><br>
+The library aims to help all programmers with the database issue, making it easy for both beginners and intermediate developers, but you need to have some knowledge of JavaScript to continue. Not much, of course. But you need to able to differentiate between a few things and use at least a few Node/JS functions. If you have no knowledge of JS and want to start programming, we recommend some courses and reading to make it easier:</p>
+<ul class="list-disc" style="padding-left: 3rem">
+    <li><a href="https://nodeschool.io">NodeSchool: Learn JavaScript and Node.JS at the same time</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN: JavaScript guide and full documentation</a></li>
+    <li><a href="https://google.com">Google: One of the best free and simple ways to learn programming</a></li>
+    </ul><br>
+<p style="font-size: 1.2rem">After that, you can not only know how to work with IsaDB, but create incredible applications!
+<br><br>
+If you see that something is wrong here, or you've seen a bug and want to talk to me. You can call me on Discord. I answer in English but prefer Portuguese (I'm Brazilian).
+My Discord is: <code>renatiinofc</code></p>
+<br><br>
+<h1 style="font-size: 1.5rem">Let's code?</h1>
+<p style="font-size: 1.2rem">So, to get started, you need to install the "isadb" library, it's easy, just copy one of these below into your console. Always remember that it must be in your project's main folder to install correctly. Ok?</p>
+<pre>
+<span style="color: rgb(111, 66, 193)">npm</span> <span style="color: #11eaf2">install isadb</span><code>
+<span style="color: rgb(111, 66, 193)">yarn</span> <span style="color: #11eaf2">add isadb</span>
+<span style="color: rgb(111, 66, 193)">pnpm</span> <span style="color: #11eaf2">add isadb</span>
+</code><span style="color:rgb(111, 66, 193)">bun</span> <span style="color: #11eaf2">add isadb</span>
+</pre>
+<br><br>
+<p style="font-size: 1.2rem">In the examples below, i'll use CommonJS, as many beginner developers are also starting to use it. But it's important to remember that IsaDB also supports EcmaScript, so rest assured!</p><br>
+<p style="font-size: 1.2rem">To get started with IsaDB, it is important that you create an instance.<br>This helps when separating the databases.<br>If, for example, you want to create an instance focused on users and another on API information, you can do this by creating two instances.</p>
+<br><p style="font-size: 1.2rem">In our case, i'll only be creating one, since it's just for examples!</p>
+<pre>
+<span style="color: #c7460a">const</span> <span style="color: #bfab11">{</span> <span style="color: #f4e25a">Instance</span> <span style="color: #bfab11">}</span> <span style="color: #e310c3">=</span> <span style="color: #070dcd">require</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'isadb'</span><span style="color: #e310c3">)</span>
+</code><span style="color: #c7460a">const</span> <span style="color: #bc8c06">instance</span> <span style="color: #e310c3">= new</span> <span style="color: #090fb0">Instance</span><span style="color: #bc08a1">()</span>
+</pre>
+<br><br>
+<p style="font-size: 1.2rem">So let's go to the main functions. Since we're working with a database, we need to set up new functions within that database, and then return them to do the necessary work within the code, and you can do this using the set & get function.</p>
+<pre>
+<span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">set</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span>, <span style="color: #38f54e">'bar'</span><span style="color: #e310c3">)</span><code>
+</code><span style="color: #f4e25a">console</span><span style="color: #e310c3">.</span><span style="color: #070dcd">log</span><span style="color: #e310c3">(</span><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'foo'</span><span style="color: #e310c3">)<span style="color: #e310c3">.</span><span style="color: #f4e25a">value</span>)</span>
+</pre>
+<br><p style="font-size: 1.2rem">In other methods, you can check if there is any value inside the database, remove that value and return all those values. It depends on what you're going to manipulate your data with.</p>
+<pre>
+<span style="color: #c7460a">const</span> <span style="color: #bc8c06">hasBoolean</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">has</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'property'</span><span style="color: #e310c3">)</span><code>
+<span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">remove</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'the property name'<span style="color: #e310c3">)</span></span>
+</code><span style="color: #c7460a">const</span> <span style="color: #bc8c06">allData</span> <span style="color: #e310c3">=</span> <span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">all</span><span style="color: #e310c3">()</span>
+</pre>
+<br><p style="font-size: 1.2rem">Remember that this is just one way of using it, if you want to learn how each function really works, check out the documentation, the menu on the left can take you where you want to go.</p>
+<br>
+<p style="font-size: 1.5rem">Handling returned values</p>
+<br><p style="font-size: 1.2rem">If the value returned (within the "value" return property) is a NUMBER or an ARRAY, there are special methods that can help you manipulating values.</p>
+<br><p style="font-size: 1.2rem">In the next example, the 1st line shows how to do an addition count on a value inside the property. While the 2nd line show how to add values to the array property, without having to save the returned value in a variable, perform an operation and then saving it again.</p>
+<br><p style="font-size: 1.2rem">Of course, if you want to see more about the operations, just check out the documentation. These are the Arrays/Numbers FunctionsDefined.
+<pre>
+<span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'arrayExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">array</span><span style="color: #e310c3">.</span></span><span style="color: #070dcd">push</span><span style="color: #e310c3">([</span><span style="color: #38f54e">'value 1'</span>, <span style="color: #38f54e">'value 2'</span>, <span style="color: #4916f0">1643</span><span style="color: #e310c3">])</span><code>
+</code><span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color: #e310c3">(</span><span style="color: #38f54e">'numberExample'</span><span style="color: #e310c3">)</span><span style="color: #e310c3">.</span><span style="color: #f4e25a">number</span><span style="color: #e310c3">.</span><span style="color: #070dcd">add</span><span style="color: #e310c3">(</span><span style="color: #4916f0">1643</span><span style="color: #e310c3">)</span>
+</pre>
+<br>
+<p style="font-size: 1.5rem">Notation</p>
+<br><p style="font-size: 1.2rem">It's as if you were using square brackets([]) and/or braces({}), only in a string and with IsaDB recognizing it!</p>
+<p style="font-size: 1.2rem">You can use both square brackets and braces in objects and arrays.</p>
+<pre>
+<span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color:#e310c3">(</span><span style="color:#38f54e">'myObject.propertyNameExample</span><span style="color:#e310c3">)</span>
+<span style="color:#f4e25a">instance</span><span style="color:#e310c3">.</span><span style="color:#070dcd">get</span><span style="color:#e310c3">(</span><span style="color:#38f54e">'myArray[0]'</span><span style="color:#e310c3">)</span>
+</pre>
+<br><p style="font-size: 1.2rem">What's more, you can use other notations that aren't normally used. But be careful not to confuse them!</p>
+<pre>
+<span style="color: #f4e25a">instance</span><span style="color: #e310c3">.</span><span style="color: #070dcd">get</span><span style="color:#e310c3">(</span><span style="color:#38f54e">'myObject[propertyNameExample]</span><span style="color:#e310c3">)</span>
+<span style="color:#f4e25a">instance</span><span style="color:#e310c3">.</span><span style="color:#070dcd">get</span><span style="color:#e310c3">(</span><span style="color:#38f54e">'myArray.0'</span><span style="color:#e310c3">)</span>
+</pre>
+<br><br><p style="font-size: 1.2rem">Well, what i have to show you about using IsaDB in Node, i hope has been clear to you who want to start using it.<br>If i've forgotten anything, remind me, and if i forget to update, then it gets complicated...<br>But that's it, thanks for using IsaDB, contact me on Discord if you need help!</p>`
+                    break
+                case 'Manipulating.isadbFiles':
+                    sectionContent = `<h1 style="font-size: 2rem">Manipulating .isadb Files.</h1>`
+                    detailsContent = `<p style="font-size: 1.2rem">Using the .isadb is not very difficult... This tutorial will help you to work directly with the file!</p>
+<br><p style="font-size: 1.2rem">Reading the .isadb file is easy. Unlike some other local databases. However, it can be a little tricky at first to create new properties or even type them. But this page can help you!</p>
+<br><p style="font-size: 1.5rem">Creating new properties</p>
+<br><p style="font-size: 1.2rem">To create new properties, you must follow the correct form, putting $ at the beggining, putting the name of the property, and then, in square brackets, the value that this property has.</p>
+<pre>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_1</span><span style="color:#e310c3">[</span><span style="color:#38f54e">property value</span><span style="color:#e310c3">]</span>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_2</span><span style="color:#e310c3">[</span><span style="color:#38f54e">property value 2</span><span style="color:#e310c3">]</span>
+</pre>
+<br><p style="font-size: 1.5rem">Comments</p>
+<br><p style="font-size: 1.2rem">If you want to improve your internal communication, you can add comments within .isadb</p>
+<pre>
+<span style="color:#6e6e6e"># This is a comment inside .isadb that is not read by the interpreter</span>
+
+<span style="color:#6e6e6e">/* This is another comment inside .isadb that is not read by the interpreter</span>
+<span style="color:#6e6e6e">And in this kind of comment, you can break lines! */</span>
+</pre>
+<br>
+<p style="font-size: 1.5rem">Types</p>
+<br><p style="font-size: 1.2rem">IsaDB has types that help it read the file correctly. So pay attention to all these types.</p>
+<pre>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_3</span><span style="color:#e310c3">[</span><span style="color:goldenrod">Object({</span><span style="color:#070dcd">name</span><span style="color:#e310c3">:</span> <span style="color:#38f54e">'inside the property object.'</span><span style="color:goldenrod">})</span><span style="color:#e310c3">]</span> <span style="color:#6e6e6e"># This saves an object inside IsaDB!</span>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_4</span><span style="color:#e310c3">[</span><span style="color:goldenrod">Array(</span><span style="color:#38f54e">'array value 1'</span>, <span style="color:#38f54e">'array value 2'</span>, <span style="color:#38f54e">'array value 3'</span><span style="color:goldenrod">)</span><span style="color:#e310c3">]</span> <span style="color:#6e6e6e"># This saves an array inside IsaDB!</span>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_5</span><span style="color:#e310c3">[</span><span style="color:goldenrod">Number(<span style="color:#3137f9">4578</span><span style="color:goldenrod">)</span><span style="color:#e310c3">]</span> <span style="color:#6e6e6e"># This saves an number inside IsaDB!</span>
+<span style="color:#e310c3">$</span><span style="color:#070dcd">property_6</span><span style="color:#e310c3">[</span><span style="color:goldenrod">Boolean(<span style="color:#3137f9">true</span><span style="color:goldenrod">)</span><span style="color:#e310c3">]</span> <span style="color:#6e6e6e"># This saves an boolean inside IsaDB!</span>
+</pre>`
+                    break
+                case 'DatabaseLimitations':
+                    sectionContent = `<h1 style="font-size: 2rem">Database Limitations</h1>`
+                    detailsContent = `<p style="font-size: 1.2rem">IsaDB has some limitations that should be followed for best use. Beware of some of them, or your experience may be ineffective.</p>
+<ul class="list-disc" style="padding-left: 3rem">
+<li>Property names may NOT contain special characters (e.g. ^, ', ç, }, #, etc).</li>
+<li>Each new property within the .isadb file is read as a LINE BREAK, so using ; has no effect.
+<li>In each new property, you must put $ at the beggining.</li>
+<li>Beware of erros, IsaDB does not normally interrupt the code if an error occurs. However, the file is not read correctly.</li>
+</ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`
+                    break
+                default:
+                    sectionContent = document.querySelector('main .prose').innerHTML;
+            }
+            
+            contentDiv.innerHTML = sectionContent;
+            detailsDiv.innerHTML = detailsContent;
+        }
+
+        function scrollToDetail(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadContent(); // Carregar conteúdo principal ao carregar a página
+        });
+    </script>
+</body>
+</html>
